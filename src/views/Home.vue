@@ -1,18 +1,28 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <button @click="createWindow">create</button>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import {ipcRenderer} from 'electron'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+  
+  },
+  methods: {
+    createWindow() {
+      var _windowProperties = {
+        state : 1,
+        message : "Error message send",
+        windowProperty : {width: 500, height: 500},
+        router: "about"
+      }
+      ipcRenderer.send('open-dashboard-window', _windowProperties)
+    }
   }
 }
 </script>
