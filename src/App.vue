@@ -8,6 +8,13 @@
   </div>
 </template>
 
+<script>
+import 'vuetify/dist/vuetify.min.css'
+export default {
+  
+}
+</script>
+
 <style>
  @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700');
 #app {
