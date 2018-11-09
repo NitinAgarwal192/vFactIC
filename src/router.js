@@ -9,11 +9,6 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Trial',
-      component: () => import(/* webpackChunkName: "about" */ './Trial.vue')
-    },
-    {
-      path: '/login',
       name: 'Login',
       component: Login
     },
@@ -23,7 +18,22 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/DashBoard.vue')
+      component: () => import(/* webpackChunkName: "about" */ './views/DashBoard.vue'),
+      props: true,
+      children: [
+        {
+          path: '/',
+          props: true,
+          name: 'mainView',
+          component: () => import('./views/DashBoard/MainView.vue')
+        },
+        {
+          path: '/menu',
+          props: true,
+          name: 'mainView2',
+          component: () => import('./views/DashBoard/MainView2.vue')
+        }
+      ]
     },
     {
       path: '/home',
