@@ -48,7 +48,7 @@ function createDashboardWindow (router, property) {
     // Load the index.html when not in development
     dashboardWindow.loadURL(`file://${__dirname}/index.html#`+router)
   }
-
+  win.close();
   dashboardWindow.on('closed', () => {
     dashboardWindow = null
   })
